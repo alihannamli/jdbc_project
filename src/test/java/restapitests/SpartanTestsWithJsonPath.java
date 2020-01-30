@@ -8,6 +8,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import utils.ConfigurationReader;
 
+import java.util.List;
+
 import static io.restassured.RestAssured.*;
 import static org.junit.Assert.*;
 
@@ -84,6 +86,23 @@ public class SpartanTestsWithJsonPath {
         System.out.println("email = " + email);
         System.out.println("companyName = " + companyName);
         System.out.println("companyCity = " + companyCity);
+
+    }
+
+    @Test
+    public void hr_api_countries_jsonpath_list(){
+        JsonPath json = get("http://100.24.59.90:1000/ords/hr/countries").jsonPath();
+
+//        json.prettyPrint();
+
+        List<String> countryNames = json.getList("items.country_name");
+        System.out.println("countryNames = " + countryNames);
+        List<String> countryIDs = json.getList("items.country_id");
+        System.out.println("countryIDs = " + countryIDs);
+
+        // get countryNames of all countries in region id 2
+        List<String > countriesInRegion2 = json.getList("items.findAll {it.region_id == 2 }.country_name");
+        System.out.println("countriesInRegion2 = " + countriesInRegion2);
 
     }
 
