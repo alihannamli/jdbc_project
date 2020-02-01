@@ -1,50 +1,72 @@
 package Day6restapi_gson_serialization;
 
 import com.google.gson.annotations.SerializedName;
-/*
-{
-    "region_id": 9,
-    "region_name": "Europe"
- }
- */
+
+/*{
+    "id": 15,
+    "name": "Meta",
+    "gender": "Female",
+    "phone": 1938695106
+}*/
 
 public class Spartan {
+    @SerializedName("id")
+    private Integer spartanID;
 
-    private Integer region_id;
-    private String region_name;
+
+    private String name;
+    private String gender;
+    private Long phone;
+
+    public Spartan() {
+    }
+
+    public Spartan(Integer id, String name, String gender, Long phone) {
+        this.spartanID = id;
+        this.name = name;
+        this.gender = gender;
+        this.phone = phone;
+    }
 
     @Override
     public String toString() {
         return "Spartan{" +
-                "region_id=" + region_id +
-                ", region_name='" + region_name + '\'' +
+                "id=" + spartanID +
+                ", name='" + name + '\'' +
+                ", gender='" + gender + '\'' +
+                ", phone=" + phone +
                 '}';
     }
 
-
-    public Spartan(){
-
+    public void setSpartanID(Integer spartanID) {
+        this.spartanID = spartanID;
     }
 
-    public Spartan(Integer region_id, String region_name) {
-        this.region_id = region_id;
-        this.region_name = region_name;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setRegion_id(Integer region_id) {
-        this.region_id = region_id;
-    }
-    public void setRegion_name(String region_name) {
-        this.region_name = region_name;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
-    public Integer getRegion_id() {
-        return region_id;
+    public void setPhone(Long phone) {
+        this.phone = phone;
     }
 
-    public String getRegion_name() {
-        return region_name;
+    public Integer getSpartanID() {
+        return spartanID;
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public String getGender() {
+        return gender;
+    }
+
+    public Long getPhone() {
+        return phone;
+    }
 }
