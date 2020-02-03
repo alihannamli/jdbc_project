@@ -4,6 +4,7 @@ import io.restassured.http.ContentType;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
 import org.junit.Test;
+import utils.BookitApiUtil;
 
 import java.io.File;
 
@@ -26,5 +27,12 @@ public class JsonSchemaValidationExample {
                 .pathParam("id", 99)
                 .when().get("http://3.95.173.92:8000/api/spartans/{id}")
                 .then().assertThat().body(matchesJsonSchema(new File("/Users/alihannamli/Desktop/SingleSpartanSchema.json")));
+
+    }
+
+    @Test
+    public void testUtil(){
+        String bookitToken = BookitApiUtil.generateToken(); // 'generateToken' method is giving us a token each time when we run it.
+        System.out.println("bookitToken = " + bookitToken);
     }
 }

@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources",
         glue = "StepDefinitions",
-        dryRun = true
+        dryRun = false
 )
 
 public class CukesRunner {
